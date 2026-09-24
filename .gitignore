@@ -1,0 +1,16 @@
+# Sécurité : ne jamais publier de données ni d'identifiants
+*.sql
+*.sql.gz
+wp-config.php
+.env
+*.log
+dead.letter
+*adminer*.php
+*.conf
+
+# Archives et fichiers système
+*.zip
+*.tar.gz
+.DS_Store
+.claude/
+node_modules/
