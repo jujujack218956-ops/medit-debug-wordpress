@@ -60,6 +60,35 @@ $('.popup-close').click(function () {
 <a href="<?php echo $lien['url']; ?>" target="_blank">
 ```
 
+## Avant / après
+
+**Avant : le site ne s'affiche plus.** Le journal d'erreurs PHP indique une fonction déclarée deux fois.
+
+![Journal PHP : Fatal error, Cannot redeclare contact_btn()](captures/avant-fatal-error.webp)
+
+**Après : la pop-up fonctionne.** Le formulaire Contact Form 7 et le lien Google Maps s'affichent, et la croix ferme la fenêtre.
+
+![Pop-up du salon avec le lieu, la date, le lien Google Maps et le formulaire](captures/apres-popup-ouverte.webp)
+
+**Après : le menu est correct.** Une fois la pop-up fermée, le bouton « Nous contacter » est intégré au menu et mis en forme.
+
+![Page d'accueil avec le bouton Nous contacter aligné dans le menu](captures/apres-popup-fermee-menu.webp)
+
+**Après : Elementor se charge.** L'éditeur s'ouvre de nouveau sur la page d'accueil.
+
+![Éditeur Elementor chargé sur la page d'accueil](captures/apres-elementor-charge.webp)
+
+**Menu mobile, avant et après.** Avant la correction, le lien « Nous contacter » sortait de la liste du menu, sans mise en forme. Après, c'est une entrée du menu comme les autres.
+
+<p>
+  <img src="captures/avant-bouton-contact-mobile.webp" alt="Avant : menu mobile avec le lien Nous contacter hors de la liste" width="380">
+  <img src="captures/apres-menu-mobile.webp" alt="Après : menu mobile avec Nous contacter aligné dans la liste" width="220">
+</p>
+
+**Pop-up sur mobile.** La pop-up s'adapte à la largeur de l'écran.
+
+<img src="captures/apres-popup-mobile.webp" alt="Pop-up du salon affichée sur mobile avec le formulaire" width="220">
+
 ## Contenu du dépôt
 
 ```
@@ -81,5 +110,6 @@ Le périmètre de la mission était la correction des bugs. Pour une mise en pro
 
 - **Sécurité** : échapper toutes les sorties des champs ACF (`esc_html()`, `esc_url()`, `wp_kses_post()`) et ajouter `rel="noopener"` aux liens `target="_blank"` ;
 - **Maintenabilité** : sortir le script de `header.php` pour le charger avec `wp_enqueue_script()`, et ne plus écrire en dur l'ID de la page (161) ni celui du formulaire (910) ;
+- **Responsive** : sur mobile, la pop-up occupe toute la largeur et le bouton de fermeture, positionné en `right: -5px`, est à moitié hors de l'écran. Il faudrait ajouter une marge latérale (`width: calc(100% - 2rem)`) et placer la croix à l'intérieur de la fenêtre ;
 - **Accessibilité** : transformer le `<span>` de fermeture en `<button>` avec un `aria-label`, permettre de fermer avec la touche Échap et garder le focus dans la pop-up ;
 - **RGPD** : ajouter une case de consentement et un lien vers la politique de confidentialité dans le formulaire de collecte d'e-mails.
